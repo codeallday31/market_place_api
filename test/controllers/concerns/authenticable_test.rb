@@ -17,7 +17,7 @@ class AuthenticableTest < ActionDispatch::IntegrationTest
   end
 
   test "should get current user" do
-    @authentication.request.headers["Authorization"] = "Bearer #{JsonWebToken.encode({ user_id: @user.id })}"
+    @authentication.request.headers["Authorization"] = JsonWebToken.encode({ user_id: @user.id })
 
     assert_not_nil @authentication.current_user
     assert_equal @user.id, @authentication.current_user.id
