@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :users, only: %i[show create update destroy]
 
       post "tokens/create"
+
+      resources :products
     end
   end
 end

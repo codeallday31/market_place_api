@@ -3,6 +3,12 @@ module Authenticable
     @current_user ||= find_user_from_token
   end
 
+  protected
+
+  def check_login
+    head :forbidden unless current_user
+  end
+
   private
 
   def find_user_from_token
