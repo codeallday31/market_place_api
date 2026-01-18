@@ -5,13 +5,15 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
-  test "show show user" do
+  test "should show user" do
     get api_v1_user_url(@user)
     assert_response :success
     # Test to ensure response container the correct email
-    json_response = JSON.parse(self.response.body)
-    assert_equal @user.email, json_response["email"]
-  end
+    json_response = JSON.parse(response.body, symbolize_names: true)
+    assert_equal @user.email, json_response.dig(:data, :attributes, :email)
+    assert_equal @user.products.first.id.to_s, json_response.dig(:data, :relationships, :products, :data, 0, :id)
+    assert_equal @user.products.first.title, json_response.dig(:included, 0, :attributes, :title)
+ end
 
   test "should create user" do
     assert_difference("User.count") do
