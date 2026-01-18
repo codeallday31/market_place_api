@@ -3,7 +3,7 @@ class CreateProducts < ActiveRecord::Migration[8.1]
     create_table :products do |t|
       t.string :title
       t.decimal :price
-      t.boolean :published
+      t.boolean :published, default: false
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
