@@ -19,6 +19,7 @@ User.delete_all
       price: rand(1.0..100.0),
       published: true,
       user_id: user.id,
+      quantity: rand(1..100),
     )
     puts "Created a brand new product #{product.title}"
   end
