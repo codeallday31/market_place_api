@@ -27,7 +27,7 @@ class Api::V1::ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should create product" do
     assert_difference("Product.count") do
       post api_v1_products_url,
-        params: { product: { title: @product.title, price: @product.price, published: @product.published } },
+        params: { product: { title: @product.title, price: @product.price, published: @product.published, quantity: 10 } },
         headers: { Authorization: JsonWebToken.encode(user_id: @product.user.id) }, as: :json
     end
     assert_response :created
