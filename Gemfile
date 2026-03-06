@@ -53,7 +53,7 @@ gem "bcrypt", "~> 3.1"
 
 gem "jwt", "~> 3.1"
 
-gem "faker", "~> 3.5"
+gem "faker", "~> 3.6"
 
 gem "jsonapi-serializer", "~> 2.2"
 
